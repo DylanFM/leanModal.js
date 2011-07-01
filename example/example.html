@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+		<title>leanModal - a JQuery modal plugin that works with your CSS</title> 
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="example.css" />
+  </head>
+  <body>
+
+		<h1>leanModal.js</h1> 
+		<p id="intro">A super simple plugin that works with your CSS.</p> 
+
+		<p id="examples" class="section box"> 
+			<strong>Examples:</strong> 
+			<a id="go" rel="leanModal" name="signup" href="#signup">Sign Up Form</a> | <a id="go" rel="leanModal" name="test" href="#test">Basic Content</a> 
+		</p> 
+
+		<div id="signup"> 
+			<div id="signup-ct"> 
+				<div id="signup-header"> 
+					<h2>Create a new account</h2> 
+					<p>It's simple, and free.</p> 
+				</div> 
+				
+				<form action=""> 
+     
+				  <div class="txt-fld"> 
+				    <label for="">Username</label> 
+				    <input id="" class="good_input" name="" type="text" /> 
+ 
+				  </div> 
+				  <div class="txt-fld"> 
+				    <label for="">Email address</label> 
+				    <input id="" name="" type="text" /> 
+				  </div> 
+				  <div class="txt-fld"> 
+				    <label for="">Password</label> 
+				    <input id="" name="" type="text" /> 
+ 
+				  </div> 
+				  <div class="btn-fld"> 
+				  <button type="submit">Sign Up &raquo;</button> 
+</div> 
+				 </form> 
+			</div> 
+		</div> 
+
+		<div id="test"> 
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum libero purus, convallis nec vestibulum eget, luctus vitae purus. Vestibulum non mauris et sem vulputate pellentesque ac a turpis. Ut vel lacus vitae justo vestibulum lobortis. Nunc ipsum ipsum, laoreet id dictum nec, fermentum vel purus. Maecenas nisl felis, faucibus non rutrum eu, sollicitudin sed ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent dignissim lacinia tempus. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nulla accumsan pellentesque velit, a malesuada diam tristique a. Fusce eleifend magna erat, et imperdiet orci. Quisque sapien mauris, malesuada eu tristique pulvinar, placerat id ligula. Vivamus vitae viverra nulla. Donec eget turpis vel erat malesuada sodales.</p> 
+		</div> 
+
+    <script src="../lib/jquery-1.6.2.js"></script>
+    <script src="../jquery.leanModal.js"></script>
+    <script>
+      $(function () {
+        $('a[rel*=leanModal]').leanModal({ top : 200 });
+      });
+    </script>
+  </body>
+</html>
