@@ -1,68 +1,57 @@
 (function($){
  
-    $.fn.extend({ 
-         
-        leanModal: function(options) {
- 
-            var defaults = {
-                top: 100,
-                overlay: 0.5
-            }
-                 
-            options =  $.extend(defaults, options);
- 
-            return this.each(function() {
+  $.fn.extend({ 
+    leanModal: function(options) {
+
+      var defaults = {
+        top: 100,
+        overlay: 0.5,
+        speed: 200
+      };
+
+      opts =  $.extend(defaults, options);
+
+      if (this.length) {
+        return this.each(function() {
+          $(this).click(function(e) {
+
+            var overlay = $('<div id="lean_overlay" />'),
+                modal = $($(this).attr('href')),
+                modal_width;
+
+            e.preventDefault();
             
-                var o = options;
-               
-                $(this).click(function(e) {
-              
-          	  	var overlay = $("<div id='lean_overlay'></div>");
-              
-              	var modal_id = $(this).attr("href");
+            if (modal.length) {
+              modal_width = modal.outerWidth();
 
-				$("body").append(overlay);
-                
-				$("#lean_overlay").click(function() { 
-                     close_modal(modal_id);                    
-                });
-                         	
-              	var modal_height = $(modal_id).outerHeight();
-        	  	var modal_width = $(modal_id).outerWidth();
+              overlay
+                .appendTo('body')
+                .click(function() { 
+                  $(this).fadeOut(opts.speed, function () {
+                    modal.hide();
+                    $(this).remove();
+                  });
+                })
+                .css({ display: 'block', opacity: 0 })
+                .fadeTo(opts.speed, opts.overlay);
 
-        		$('#lean_overlay').css({ 'display' : 'block', opacity : 0 });
+              modal
+                .css({ 
+                  display: 'block',
+                  position: 'fixed',
+                  opacity: 0,
+                  'z-index': 11000,
+                  left: 50 + '%',
+                  'margin-left': -(modal_width/2) + 'px',
+                  top: opts.top + 'px'
+                })
+                .fadeTo(opts.speed, 1);
+            }
 
-        		$('#lean_overlay').fadeTo(200,o.overlay);
+          });
+        });
+      }
+    }
+  });
 
-        		$(modal_id).css({ 
-        		
-        			'display' : 'block',
-        			'position' : 'fixed',
-        			'opacity' : 0,
-        			'z-index': 11000,
-        			'left' : 50 + '%',
-        			'margin-left' : -(modal_width/2) + "px",
-        			'top' : o.top + "px"
-        		
-        		});
-
-        		$(modal_id).fadeTo(200,1);
-
-                e.preventDefault();
-                		
-              	});
-             
-            });
-
-			function close_modal(modal_id){
-
-        		$("#lean_overlay").fadeOut(200);
-
-        		$(modal_id).css({ 'display' : 'none' });
-			
-			}
-    
-        }
-    });
-     
 })(jQuery);
